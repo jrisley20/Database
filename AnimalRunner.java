@@ -25,8 +25,8 @@ public class AnimalRunner {
 		abstractAnimal animal = new abstractAnimal();
 		boolean running = true;
 		AnimalWriter writer = new AnimalWriter();
-		
 		Scanner scan = new Scanner(System.in);
+		writer.fillArray("Cats.txt", animal.getArray());
 		while (running)
 		{
 			
@@ -39,7 +39,8 @@ public class AnimalRunner {
 					+ "6) add Fish\n"
 					+ "7) add Birds\n"
 					+ "8) add Reptiles\n"
-					+ "9) quit");
+					+ "9) remove animal\n"
+					+ "10) quit");
 			int answer = scan.nextInt();
 			
 			
@@ -91,49 +92,77 @@ public class AnimalRunner {
 					break;
 				
 				case 5:
-					System.out.println("Enter the name <space> origin <space> weight <space> color");
+					System.out.println("Enter the name <space> origin <space> color");
 					String nameC = scan.next();
+					nameC = nameC.toLowerCase();
 					String originC = scan.next();
-					int weightC = scan.nextInt();
+					originC = originC.toLowerCase();
 					String colorC = scan.next();
-					
-					animal.addAnimals(new Animal(nameC, originC, weightC, colorC, Animal.Type.CAT));
+					colorC = colorC.toLowerCase();
+					animal.addAnimals(new Animal(nameC, originC, colorC, Animal.Type.CAT));
 					writer.addToFile(animal.getArray(), "Cats.txt", Animal.Type.CAT);
 					break;
 					
 				case 6:
-					System.out.println("Enter the name <space> origin <space> weight <space> color");
+					System.out.println("Enter the name <space> origin <space> color");
 					String nameF = scan.next();
+					nameF = nameF.toLowerCase();
 					String originF = scan.next();
+					originF = originF.toLowerCase();
 					int weightF = scan.nextInt();
 					String colorF = scan.next();
-					animal.addAnimals(new Animal(nameF, originF, weightF, colorF, Animal.Type.FISH));
+					colorF = colorF.toLowerCase();
+					animal.addAnimals(new Animal(nameF, originF, colorF, Animal.Type.FISH));
 					writer.addToFile(animal.getArray(), "Fish.txt", Animal.Type.FISH);
 					break;
 //					
 //					
 				case 7:
-					System.out.println("Enter the name <space> origin <space> weight <space> color");
+					System.out.println("Enter the name <space> origin <space> color");	
 					String nameB = scan.next();
+					nameB = nameB.toLowerCase();
 					String originB = scan.next();
+					originB = originB.toLowerCase();
 					int weightB = scan.nextInt();
 					String colorB = scan.next();
-					animal.addAnimals(new Animal(nameB, originB, weightB, colorB, Animal.Type.BIRD));
+					colorB = colorB.toLowerCase();
+					animal.addAnimals(new Animal(nameB, originB, colorB, Animal.Type.BIRD));
 					writer.addToFile(animal.getArray(), "Birds.txt", Animal.Type.BIRD);
 					break;
 					
 				case 8:
-					System.out.println("Enter the name <space> origin <space> weight <space> color");
+					System.out.println("Enter the name <space> origin <space> color");
 					String nameR = scan.next();
+					nameR = nameR.toLowerCase();
 					String originR = scan.next();
+					originR = originR.toLowerCase();
 					int weightR = scan.nextInt();
 					String colorR = scan.next();
-					animal.addAnimals(new Animal(nameR, originR, weightR, colorR, Animal.Type.REPTILE));
+					colorR = colorR.toLowerCase();
+					animal.addAnimals(new Animal(nameR, originR, colorR, Animal.Type.REPTILE));
 					writer.addToFile(animal.getArray(), "Reptiles.txt", Animal.Type.REPTILE);
 					break;
+				
 					
-					
+
+
 				case 9:
+					
+					System.out.println("Enter the name: ");
+					String name = scan.next();
+					name = name.toLowerCase();
+					System.out.println("Enter type(CAT,FISH,REPTILE,BIRD): ");
+					String type = scan.next();
+					type = type.toUpperCase();
+					switch (type){
+						case "CAT":
+							writer.removeFromFile("Cats.txt", name, type, animal.getArray());
+							break;
+							
+					}
+					break;
+					
+				case 10:
 					System.out.println("bye\n");
 					
 					running = false;

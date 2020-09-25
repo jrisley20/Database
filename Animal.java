@@ -8,14 +8,13 @@ public class Animal {
 	private String speed;
 	private Type type;
 	
-	public Animal(String nameIn, String originIn, int weightIn, String colorIn, Type a)
+	public Animal(String nameIn, String origin, String colorIn, Type a)
 	{
 		name = nameIn;
-		origin = originIn;
-		weight = weightIn;
-		color = colorIn;
 		type = a;
+		color = colorIn;
 		setSpeed(type);
+		setWeight(type);
 	}
 	
 	enum Type
@@ -45,6 +44,32 @@ public class Animal {
 	{
 		return weight;
 	}
+
+
+	public void setWeight(Type a)
+	{
+		type = a;
+		if (type == type.CAT)
+		{
+			weight = 200;
+		}
+		
+		else if (type == type.BIRD)
+		{
+			weight = 10;
+		}
+		
+		else if (type == type.FISH)
+		{
+			weight = 8;
+		}
+		
+		else if (type == type.REPTILE)
+		{
+			weight = 35;
+		}
+	}
+
 	
 	public String getColor()
 	{
@@ -86,6 +111,6 @@ public class Animal {
 	@Override
 	public String toString()
 	{
-		return String.format("Name: %s, Type: %s, Origin: %s, Color: %s, Weight: %d, Speed: %s", name, type, origin, color, weight, speed);
+		return String.format("NAME: %s TYPE: %s ORIGIN: %s COLOR: %s WEIGHT: %dlb SPEED: %s\n", name, type, origin, color, weight, speed);
 	}
 }
