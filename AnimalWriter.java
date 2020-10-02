@@ -15,9 +15,10 @@ public class AnimalWriter{
 		
 	}
 
-	public void updateFile(File fileIn, ArrayList<Animal> anml) throws IOException {
+	public void updateFile(String fileIn, ArrayList<Animal> anml) throws IOException {
 		try{
-			writer = new FileWriter(fileIn, true);
+			File obj = new File(fileIn);
+			writer = new FileWriter(obj, false);
 			for (int i = 0; i < anml.size(); i++){
 			writer.write(anml.get(i).toString());
 			}
@@ -32,46 +33,13 @@ public class AnimalWriter{
 		
 	}
 
-	public void removeFromFile(String fileIn, String nameIn, String typeIn, ArrayList<Animal> anml) throws IOException {
-		try {
-			abstractAnimal ab = new abstractAnimal(anml);
-			file = fileIn;
-			File obj = new File(file);
-			System.out.println("check");
-			Scanner scan = new Scanner(obj);
-			while(scan.hasNextLine()){
-				String lineString = scan.nextLine();
-				Scanner line = new Scanner(lineString);
-				//line.next();
-				System.out.println(lineString);
-				line.useDelimiter(",");
-				String anmlName = line.next();
-				System.out.println(anmlName);
-				String type = line.next();
-				System.out.println(type);
-				if (anmlName.contains(nameIn) && type.contains(typeIn)){
-					lineString = "" + "\b";
-					System.out.println("here!!!");
-					line.close();
-					updateFile(obj, anml);
-					break;
-				}
-				
-			}
 
-			scan.close();
-
-		} catch (Exception e) {
-			System.out.println( e + "error.");
-		}
-	}
-	
 	public void addToFile(ArrayList<Animal> a, String fileIn, Animal.Type type) throws IOException
 	{
 		
 		try {
 			file = fileIn;
-			writer = new FileWriter(file, true);
+			writer = new FileWriter(file, false);
 			System.out.println("success");
 			
 			for (int i = 0; i < a.size(); i++)
@@ -141,16 +109,16 @@ public class AnimalWriter{
 				dLine.useDelimiter(" ");
 				dLine.next();
 				String name = dLine.next();
-				System.out.println(name);
 				dLine.next();
 				String type = dLine.next();
-				System.out.println(type);
+				dLine.next();
 				dLine.next();
 				String origin = dLine.next();
 				dLine.next();
+				dLine.next();
 				String color = dLine.next();
 				dLine.next();
-				//helpFill(name, type, origin, color);
+				helpFill(name, type, origin, color, anml);
 
 			}
 			reader.close();
@@ -161,7 +129,29 @@ public class AnimalWriter{
 		
 	}
 	
-	
+	private void helpFill(String name, String type, String origin, String color, ArrayList<Animal> anml)
+	{
+		String line = String.format("%s, %s, %s, %s", name, type, origin, color);
+		Scanner scan  = new Scanner(line);
+		scan.useDelimiter(",");
+		name = scan.next();
+		type = scan.next();
+		origin = scan.next();
+		color = scan.next();
+		type = type.toUpperCase();
+		switch (type) {
+			
+			case " CAT":
+				Animal a = new Animal(name, origin, color, Animal.Type.CAT);
+				anml.add(a);
+				break;
+				
+		
+		
+		}
+		
+		
+	}
 	
 	
 	

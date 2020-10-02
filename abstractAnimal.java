@@ -32,48 +32,42 @@ public class abstractAnimal{
 		return animalList;
 	}
 
-	// public void printDatabase(){
-	// 	for (int i = 0; i < animalList.size(); i++){
-	// 		System.out.println(animalList.get(i).toString());
-	// 	}
-	// }
+	
 
 
-	// public void removeAnimal(String name, String type, ArrayList<Animal> anml){
-	// 	name = name.toLowerCase();
-	// 	type = type.toLowerCase();
-	// 	Animal.Type a;
+	public void removeAnimal(String name, String type, ArrayList<Animal> anml){
+	 	name = name.toLowerCase();
+	 	type = type.toLowerCase();
+	 	Animal.Type a;
 		
-	// 	switch (type){
-	// 		case "cat":
-	// 			a = Animal.Type.CAT;
-	// 			break;
+	 	switch (type){
+	 		case "cat":
+	 			a = Animal.Type.CAT;
+	 			break;
 
-	// 		case "bird":
-	// 			a = Animal.Type.BIRD;
-	// 			break;
+	 		case "bird":
+	 			a = Animal.Type.BIRD;
+	 			break;
 
-	// 		case "reptile":
-	// 			a = Animal.Type.REPTILE;
-	// 			break;
+	 		case "reptile":
+	 			a = Animal.Type.REPTILE;
+	 			break;
 			
-	// 		case "fish":
-	// 			a = Animal.Type.FISH;
-	// 			break;
+	 		case "fish":
+	 			a = Animal.Type.FISH;
+				break;
 
-	// 		default:
-	// 			a = Animal.Type.CAT;
-	// 	}
+	 		default:
+	 			a = Animal.Type.CAT;
+	 	}
 
-	// 	System.out.println(anml.size());
-	// 	for (int i = 0; i < anml.size(); i++){
-	// 		System.out.println(anml.size());
-	// 		if (anml.get(i).getName().equals(name) && anml.get(i).getType() == a){
-	// 			anml.remove(i);
-	// 			System.out.println(anml.size());
-	// 		}
-	// 	}
+	 	for (int i = 0; i < anml.size(); i++){
+	 		if (anml.get(i).getName().equals(name) && anml.get(i).getType() == a){
+	 			anml.remove(i);
+	 			break;
+	 		}
+	 	}
 
-	// }
+	 }
 	
 }

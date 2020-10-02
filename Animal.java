@@ -1,4 +1,3 @@
-//import Animal.Type;
 
 public class Animal {
 	private String name;
@@ -8,9 +7,10 @@ public class Animal {
 	private String speed;
 	private Type type;
 	
-	public Animal(String nameIn, String origin, String colorIn, Type a)
+	public Animal(String nameIn, String originIn, String colorIn, Type a)
 	{
 		name = nameIn;
+		origin = originIn;
 		type = a;
 		color = colorIn;
 		setSpeed(type);
@@ -49,22 +49,22 @@ public class Animal {
 	public void setWeight(Type a)
 	{
 		type = a;
-		if (type == type.CAT)
+		if (type == Animal.Type.CAT)
 		{
 			weight = 200;
 		}
 		
-		else if (type == type.BIRD)
+		else if (type == Animal.Type.BIRD)
 		{
 			weight = 10;
 		}
 		
-		else if (type == type.FISH)
+		else if (type == Animal.Type.FISH)
 		{
 			weight = 8;
 		}
 		
-		else if (type == type.REPTILE)
+		else if (type == Animal.Type.REPTILE)
 		{
 			weight = 35;
 		}
@@ -79,17 +79,17 @@ public class Animal {
 	public void setSpeed(Type a)
 	{
 		type = a;
-		if (type == type.CAT)
+		if (type == Animal.Type.CAT)
 		{
 			speed = "avg: 50 mph";
 		}
 		
-		else if (type == type.BIRD)
+		else if (type == Animal.Type.BIRD)
 		{
 			speed = "avg: 20-30 mph";
 		}
 		
-		else if (type == type.FISH)
+		else if (type == Animal.Type.FISH)
 		{
 			speed = "avg: 35 mph";
 		}

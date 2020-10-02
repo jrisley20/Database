@@ -17,16 +17,13 @@ public class AnimalRunner {
 	
 	public static void main(String[] args) throws IOException {
 		
-		JFrame frame = new JFrame();
-//		Cats cats = new Cats();
-//		Reptiles rept = new Reptiles();
-//		Birds bird = new Birds();
-//		Fish fish = new Fish();
+		
 		abstractAnimal animal = new abstractAnimal();
 		boolean running = true;
 		AnimalWriter writer = new AnimalWriter();
 		Scanner scan = new Scanner(System.in);
 		writer.fillArray("Cats.txt", animal.getArray());
+		System.out.println(animal.arraySize());
 		while (running)
 		{
 			
@@ -48,45 +45,25 @@ public class AnimalRunner {
 			{
 			
 				case 1:
-//					for (int i = 0; i < cats.getCatsInArray(); i++)
-//					{
-//						System.out.println(cats.getCat(i).toString());
-//						System.out.println("\n");
-//					}
-//					System.out.println("\n");
+
 					
 					writer.readFile("Cats.txt");
 					break;
 					
 				case 2:
-//					for (int i = 0; i < rept.getReptsInArray(); i++)
-//					{
-//						System.out.println(rept.getReptiles(i).toString());
-//						System.out.println("\n");
-//					}
-//					break;
+
 					writer.readFile("Reptiles.txt");
 					break;
 			
 					
 				case 3:
-//					for (int i = 0; i < fish.getFishInArray(); i++)
-//					{
-//						System.out.println(fish.getFish(i).toString());
-//						System.out.println("\n");
-//					}
-//					break;
+
 					writer.readFile("Fish.txt");
 					break;
 					
 					
 				case 4:
-//					for (int i = 0; i < bird.getBirdsInArray(); i++)
-//					{
-//						System.out.println(bird.getBirds(i).toString());
-//						System.out.println("\n");
-//					}
-//					break;
+
 					
 					writer.readFile("Birds.txt");
 					break;
@@ -115,8 +92,7 @@ public class AnimalRunner {
 					animal.addAnimals(new Animal(nameF, originF, colorF, Animal.Type.FISH));
 					writer.addToFile(animal.getArray(), "Fish.txt", Animal.Type.FISH);
 					break;
-//					
-//					
+										
 				case 7:
 					System.out.println("Enter the name <space> origin <space> color");	
 					String nameB = scan.next();
@@ -156,7 +132,8 @@ public class AnimalRunner {
 					type = type.toUpperCase();
 					switch (type){
 						case "CAT":
-							writer.removeFromFile("Cats.txt", name, type, animal.getArray());
+							animal.removeAnimal(name, type, animal.getArray());
+							writer.updateFile("Cats.txt", animal.getArray());
 							break;
 							
 					}
